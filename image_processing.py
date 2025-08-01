@@ -172,36 +172,3 @@ if __name__ == "__main__":
         print("Processamento concluído!")
     else:
         print("Falha no processamento da imagem.")
-
-# Função para criar uma imagem de teste caso não tenha arquivo
-def create_test_image():
-    """
-    Cria uma imagem de teste colorida para demonstrar o funcionamento.
-    """
-    # Cria uma imagem 200x200 com gradientes coloridos
-    height, width = 200, 200
-    image = np.zeros((height, width, 3), dtype=np.uint8)
-    
-    for i in range(height):
-        for j in range(width):
-            # Cria gradientes de cor
-            image[i, j, 0] = int(255 * i / height)  # Canal vermelho
-            image[i, j, 1] = int(255 * j / width)   # Canal verde  
-            image[i, j, 2] = int(255 * (i + j) / (height + width))  # Canal azul
-    
-    # Adiciona algumas formas geométricas
-    # Retângulo branco
-    image[50:100, 50:100] = [255, 255, 255]
-    
-    # Retângulo preto
-    image[120:170, 120:170] = [0, 0, 0]
-    
-    # Círculo colorido (aproximado)
-    center_x, center_y = 100, 100
-    radius = 30
-    for i in range(height):
-        for j in range(width):
-            if (i - center_x)**2 + (j - center_y)**2 <= radius**2:
-                image[i, j] = [255, 100, 50]
-    
-    return image
